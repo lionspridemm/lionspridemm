@@ -1,10 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    appDir: true,   // force App Router
-  },
-  // don’t set basePath or trailingSlash here unless you mean to
+  // Remove "experimental.appDir" — no longer needed in modern Next.js
+  reactStrictMode: true,
+  swcMinify: true,
 };
 
 export default nextConfig;
