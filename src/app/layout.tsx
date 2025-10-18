@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex items-center justify-between">
               <span className="text-base font-semibold tracking-wide">Lion’s Pride MM</span>
 
-              {/* Zero-JS dropdown via details/summary (no event handlers in Server Components) */}
+              {/* Zero-JS dropdown via details/summary */}
               <details className="relative">
                 <summary
                   className="list-none inline-flex items-center justify-center rounded-xl p-2 text-[--lp-ice] hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[--lp-ice] cursor-pointer"
@@ -60,23 +60,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Menu className="h-5 w-5" />
                 </summary>
 
+                {/* Dropdown panel */}
                 <div className="absolute right-0 mt-2 w-48 overflow-hidden rounded-2xl border border-[--lp-border] bg-[var(--lp-card)] shadow-xl">
                   <div className="px-3 py-2 border-b border-[--lp-border]">
                     <span className="text-xs uppercase tracking-wide text-[--lp-muted]">Menu</span>
                   </div>
                   <nav className="flex flex-col p-2 text-sm">
+                    {/* Mirror desktop menu exactly (no Contact) */}
                     <Link href="/" className="rounded-lg px-3 py-2 hover:bg-white/5">Home</Link>
                     <Link href="/about" className="rounded-lg px-3 py-2 hover:bg-white/5">About</Link>
-                    <Link href="/membership" className="rounded-lg px-3 py-2 hover:bg-white/5">Membership</Link>
-                    <Link href="/events" className="rounded-lg px-3 py-2 hover:bg-white/5">Events</Link>
+                    <Link href="/officers" className="rounded-lg px-3 py-2 hover:bg-white/5">Officers</Link>
                     <Link href="/documents" className="rounded-lg px-3 py-2 hover:bg-white/5">Documents</Link>
-                    <Link href="/contact" className="rounded-lg px-3 py-2 hover:bg-white/5">Contact</Link>
+                    <Link href="/events" className="rounded-lg px-3 py-2 hover:bg-white/5">Events</Link>
+                    <Link href="/join" className="rounded-lg px-3 py-2 hover:bg-white/5">Join Us</Link>
                   </nav>
                 </div>
               </details>
             </div>
 
-            {/* Big primary CTA directly under title */}
+            {/* Big primary CTA under title (mobile only) */}
             <div className="mt-3">
               <Link
                 href="/contact"
@@ -129,7 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </div>
 
-            {/* Mobile footer: Facebook only (bottom), tiny copyright */}
+            {/* Mobile footer: Facebook only + tiny copyright */}
             <div className="flex items-center justify-between md:hidden">
               <a
                 href="https://www.facebook.com/groups/237721163228220"
