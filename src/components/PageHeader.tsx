@@ -12,7 +12,7 @@ const links = [
   { href: "/documents", label: "Documents" },
   { href: "/events", label: "Events" },
   { href: "/join", label: "Join Us" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Contact" }, // still used for mobile menu
 ];
 
 export default function PageHeader() {
@@ -34,36 +34,61 @@ export default function PageHeader() {
           </div>
         </Link>
 
+        {/* ===== DESKTOP NAV ===== */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          {links.map(({ href, label }) => {
-            const active = pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                className={active ? "text-[--lp-ice] font-semibold" : "hover:text-[--lp-ice]"}
-              >
-                {label}
-              </Link>
-            );
-          })}
-          <Link href="/contact" className="btn-ice hidden lg:inline-flex">Contact</Link>
+          {links
+            .filter(({ label }) => label !== "Contact") // remove Contact from desktop links
+            .map(({ href, label }) => {
+              const active = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={
+                    active
+                      ? "text-[--lp-ice] font-semibold"
+                      : "hover:text-[--lp-ice]"
+                  }
+                >
+                  {label}
+                </Link>
+              );
+            })}
+          {/* Contact button remains */}
+          <Link href="/contact" className="btn-ice hidden lg:inline-flex">
+            Contact
+          </Link>
         </nav>
 
-        <Link href="tel:+16362990857" className="md:hidden btn-ice inline-flex items-center gap-2 mr-2">
+        {/* ===== MOBILE CALL BUTTON ===== */}
+        <Link
+          href="tel:+16362990857"
+          className="md:hidden btn-ice inline-flex items-center gap-2 mr-2"
+        >
           <Phone className="w-4 h-4" /> Call
         </Link>
 
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+        {/* ===== MOBILE MENU TOGGLE ===== */}
+        <button
+          className="md:hidden p-2"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
+      {/* ===== MOBILE MENU ===== */}
       {open && (
         <div className="md:hidden border-t border-[--lp-border] bg-black/70">
           <div className="mx-auto max-w-6xl px-4 py-4 grid gap-3">
             {links.map(({ href, label }) => (
-              <Link key={href} href={href} className="py-2" onClick={() => setOpen(false)}>
+              <Link
+                key={href}
+                href={href}
+                className="py-2"
+                onClick={() => setOpen(false)}
+              >
                 {label}
               </Link>
             ))}
