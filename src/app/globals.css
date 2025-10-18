@@ -1,70 +1,54 @@
 @import "tailwindcss";
 
-/* Logo-derived palette */
+/* Theme & palette */
 @theme {
-  --color-bg-950: #0f0e0d;           /* dark brown-charcoal */
+  --color-bg-950: #0f0e0d;
   --color-fg-100: #f5f4f2;
-  --lp-gold:    #d8a24a;             /* banner gold */
-  --lp-brass:   #b88a3c;
-  --lp-amber:   #f59e0b;             /* warm highlight */
-  --lp-ember:   #df5a2f;             /* rust-orange */
-  --lp-rust:    #b74120;
-  --lp-brown:   #4b362c;
-  --lp-sable:   #2b2320;
-  --lp-ice:     #7cc5ff;             /* lion eyes */
-  --lp-muted:   #b8b6b3;
-  --lp-border:  #3b342f;
-  --lp-card:    #1b1816;
+
+  /* brand */
+  --lp-gold:  #d8a24a;
+  --lp-amber: #f59e0b;
+  --lp-ember: #df5a2f;
+  --lp-rust:  #b74120;
+  --lp-brown: #4b362c;
+  --lp-sable: #2b2320;
+  --lp-muted: #b8b6b3;
+  --lp-border:#3b342f;
+  --lp-card:  #1b1816;
+
+  /* accent */
+  --lp-ice:   #7cc5ff; /* light blue */
 }
 
+/* Hard fallback so CSS var always exists */
 :root {
   color-scheme: dark;
+  --lp-ice: #7cc5ff;
   background: var(--color-bg-950);
   color: var(--color-fg-100);
 }
 
-/* Premium animated background with blue glow */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2;
+/* Frosted blue panel utility for server components (no styled-jsx) */
+.frost {
+  /* same ice-blue, softened via opacity */
+  background-color: rgba(124, 197, 255, 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  /* soft edge & subtle frame */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
 }
 
-body::before {
-  background:
-    radial-gradient(36% 40% at 15% 20%, color-mix(in oklab, var(--lp-ember), black 15%) 0%, transparent 60%),
-    radial-gradient(30% 34% at 85% 18%, color-mix(in oklab, var(--lp-gold), white 8%) 0%, transparent 62%),
-    radial-gradient(28% 30% at 20% 80%, color-mix(in oklab, var(--lp-brass), black 10%) 0%, transparent 60%),
-    radial-gradient(24% 26% at 78% 78%, color-mix(in oklab, var(--lp-ice), white 12%) 0%, transparent 70%),
-    linear-gradient(180deg, #0f0e0d, #171411);
-  filter: blur(0.2px) saturate(1.05);
-  animation: drift 28s linear infinite alternate;
-}
-
-body::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 .08 .12 .16'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  opacity: .22;
-  mix-blend-mode: soft-light;
-  z-index: -1;
-}
-
-@keyframes drift {
-  0%   { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
-  100% { background-position: 6% 8%, -6% -4%, 6% -6%, -5% 5%, 0% 0%; }
-}
 
 /* Components */
 @layer components {
-  .card { @apply rounded-2xl border border-[--lp-border] bg-[--lp-card]; }
+  .card { @apply rounded-2xl border border-[--lp-border] bg-[var(--lp-card)]; }
   .btn { @apply rounded-2xl px-5 py-2.5 font-semibold shadow; }
-  .btn-accent { @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[--lp-amber] text-black hover:shadow-lg; }
-  .btn-ice { @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[--lp-ice] text-black hover:shadow-lg; }
+  .btn-accent { @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[var(--lp-amber)] text-black hover:shadow-lg; }
+  .btn-ice { @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[var(--lp-ice)] text-black hover:shadow-lg; }
   .prose-muted { color: var(--lp-muted); }
 }
 
-/* Link hover and blue option */
+/* Links */
 a { transition: color .15s ease, opacity .15s ease; }
 a:hover { color: var(--lp-ice); }
