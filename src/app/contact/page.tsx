@@ -9,19 +9,22 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 text-white">
+    <div className="relative mx-auto max-w-6xl px-4 text-white">
+      {/* Global page backdrop (covers hero + tiles) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          /* Top-focused blue + subtle gold glow, then long feather to deep dark.
+             Second radial anchored *below* the fold to keep the fade going on mobile. */
+          background:
+            "radial-gradient(120% 90% at 50% -10%, rgba(124,197,255,0.22) 0%, rgba(124,197,255,0.14) 22%, rgba(216,162,74,0.10) 40%, rgba(15,14,13,0.96) 70%)," +
+            "radial-gradient(120% 120% at 50% 120%, rgba(216,162,74,0.10) 0%, rgba(15,14,13,0.96) 55%, rgba(15,14,13,1) 85%)",
+        }}
+      />
+
       {/* HERO */}
       <section className="relative isolate py-24 md:py-28">
-        {/* Softened backdrop feathering into site background */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(100% 70% at 50% 30%, rgba(124,197,255,0.22) 0%, rgba(216,162,74,0.10) 35%, rgba(15,14,13,0.95) 80%)",
-          }}
-        />
-
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
             Prayer, Presence, <span className="text-[--lp-ice]">Purpose</span>.
@@ -31,7 +34,7 @@ export default function ContactPage() {
             We ride together, we pray together, and we show up.
           </p>
 
-          {/* Primary CTA — tooltip on hover/focus (desktop) */}
+          {/* Primary CTA — tooltip shows number on hover/focus (desktop) */}
           <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-center">
             <a
               href="tel:+16362990857"
@@ -41,7 +44,6 @@ export default function ContactPage() {
             >
               <Phone className="w-4 h-4" />
               Call Now
-
               {/* Tooltip */}
               <span
                 role="tooltip"
