@@ -39,13 +39,30 @@
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.30);
 }
 
-
 /* Components */
 @layer components {
   .card { @apply rounded-2xl border border-[--lp-border] bg-[var(--lp-card)]; }
-  .btn { @apply rounded-2xl px-5 py-2.5 font-semibold shadow; }
-  .btn-accent { @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[var(--lp-amber)] text-black hover:shadow-lg; }
-  .btn-ice { @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[var(--lp-ice)] text-black hover:shadow-lg; }
+
+  /* Base button primitive */
+  .btn {
+    @apply rounded-2xl px-5 py-2.5 font-semibold shadow;
+    transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+  }
+
+  /* Gold/amber CTA (unchanged hover) */
+  .btn-accent {
+    @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[var(--lp-amber)] text-black hover:shadow-lg;
+  }
+
+  /* Ice primary — now flips to gold on hover for contrast */
+  .btn-ice {
+    @apply rounded-2xl px-5 py-2.5 font-semibold shadow bg-[var(--lp-ice)] text-black hover:shadow-lg;
+  }
+  .btn-ice:hover {
+    background-color: var(--lp-gold);
+    color: #000; /* lock readable contrast on hover */
+  }
+
   .prose-muted { color: var(--lp-muted); }
 }
 

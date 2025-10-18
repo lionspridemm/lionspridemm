@@ -1,0 +1,99 @@
+/* public/mobile.css */
+/* Scope: only loaded on screens <= 900px via media attr in <link> */
+
+/* Base rhythm + readable line length */
+html, body {
+  font-size: 16px;                 /* keep text crisp, not microscopic */
+  line-height: 1.5;
+}
+
+main {
+  max-width: 94vw !important;      /* shrink container a touch for breathing room */
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-top: 7rem !important;     /* clear the fixed header on short viewports */
+  padding-bottom: calc(8rem + env(safe-area-inset-bottom)) !important;
+}
+
+/* Cards: denser on mobile, still on-brand dark theme */
+.card {
+  padding: 1rem !important;
+  border-radius: 1rem !important;
+}
+
+/* Headings: scale down a notch so they don’t wrap awkwardly */
+h1 { font-size: 1.625rem !important; line-height: 1.2; }   /* ~26px */
+h2 { font-size: 1.25rem !important; line-height: 1.3; }    /* ~20px */
+h3 { font-size: 1.125rem !important; line-height: 1.3; }   /* ~18px */
+
+/* Paragraphs and small print */
+p, li { font-size: 0.9875rem; }  /* subtle downscale for tighter copy blocks */
+
+/* Buttons: bigger targets, full-width stacks */
+.btn,
+.btn-ice,
+.btn-accent {
+  padding: 0.675rem 1rem !important;
+  border-radius: 0.9rem !important;
+}
+
+.btn-ice,
+.btn-accent {
+  display: inline-flex;
+  width: auto;
+}
+
+@media (max-width: 640px) {
+  .btn-ice,
+  .btn-accent {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Fixed header/footer: add backdrop blur and ensure they don’t overwhelm content */
+header, .site-header {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+footer {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 0.9rem;
+}
+
+/* Footer links wrap and don’t squeeze content */
+footer .flex {
+  flex-wrap: wrap;
+  gap: 0.5rem !important;
+}
+
+/* Floating Contact button: keep it visible and reachable */
+a[href="/contact"].fixed,
+a[aria-label="Contact Lion’s Pride MM"].fixed {
+  left: 0.75rem !important;
+  top: calc(5.5rem + env(safe-area-inset-top)) !important;
+  padding: 0.6rem 0.9rem !important;
+  border-radius: 0.9rem !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,.3);
+}
+
+/* Navigation items: prevent overflow/scroll-jank */
+nav a {
+  font-size: 0.95rem;
+}
+
+/* Utilities for images/iframes in content blocks */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+
+/* Lists inside legal pages: better spacing on mobile */
+ul { padding-left: 1.25rem; }
+ul > li { margin: 0.4rem 0; }
+
+/* Reduce huge gaps on small phones */
+.py-24 { padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
