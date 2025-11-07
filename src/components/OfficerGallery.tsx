@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, MouseEvent } from "react";
+import { useEffect, useRef, useState, MouseEvent, KeyboardEvent as ReactKeyboardEvent } from "react";
 import { X } from "lucide-react";
 
 type Officer = {
@@ -10,6 +10,7 @@ type Officer = {
   title: string;
   image: string | null;
   testimony: string; // may be "" for blank modal
+  nickname?: string; // optional, safe if not provided
 };
 
 export default function OfficerGallery({ officers }: { officers: Officer[] }) {
@@ -44,14 +45,21 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
     }
   };
 
+  // Keyboard open for the card wrapper
+  const onCardKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>, off: Officer) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openModal(off);
+    }
+  };
+
   // Render selected testimony with verse de-dup; blank if no content
   const renderSelectedTestimony = () => {
     if (!selected) return null;
 
     // Treat "Testimony coming soon." or empty/whitespace as NO CONTENT
     const raw = (selected.testimony ?? "").trim();
-    const hasContent =
-      raw.length > 0 && raw !== "Testimony coming soon.";
+    const hasContent = raw.length > 0 && raw !== "Testimony coming soon.";
 
     if (!hasContent) {
       // Blank modal body (intentionally empty)
@@ -60,9 +68,7 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
 
     const paras = raw.split("\n").map((p) => p.trim()).filter(Boolean);
     const hasVerse = paras.some((p) => /\bMatthew\s*6:33\b/i.test(p));
-    const bodyParas = hasVerse
-      ? paras.filter((p) => !/\bMatthew\s*6:33\b/i.test(p))
-      : paras;
+    const bodyParas = hasVerse ? paras.filter((p) => !/\bMatthew\s*6:33\b/i.test(p)) : paras;
 
     return (
       <>
@@ -92,11 +98,14 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {officers.map((off) => (
           <li key={off.name} className="card overflow-hidden group">
-            {/* Card click opens modal (mobile/tablet friendly) */}
-            <button
+            {/* Card wrapper: DIV with button semantics (no nested <button> issue) */}
+            <div
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => onCardKeyDown(e, off)}
               onClick={() => openModal(off)}
-              className="w-full text-left"
               aria-label={`Open bio for ${off.name}`}
+              className="w-full text-left cursor-pointer"
             >
               <div className="relative aspect-[5/3] w-full overflow-hidden bg-black/40">
                 {off.image ? (
@@ -119,14 +128,15 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
                 <p className="text-xs uppercase tracking-wide text-[--lp-muted]">
                   {off.title}
                 </p>
-                {/* Name is no longer the hover target */}
+
+                {/* Name + optional nickname line */}
                 <div className="mt-1">
                   <span className="block text-lg font-semibold">{off.name}</span>
-                  {("nickname" in off && off.nickname) && (
+                  {off.nickname ? (
                     <span className="inline-block mt-0.5 text-sm text-[--lp-ice] font-medium">
                       “{off.nickname}”
                     </span>
-                  )}
+                  ) : null}
                 </div>
 
                 {/* CTA line: hover target for desktop; click works everywhere */}
@@ -136,7 +146,7 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
                     onMouseEnter={() => onCtaEnter(off)}
                     onMouseLeave={onCtaLeave}
                     onClick={(e) => {
-                      e.stopPropagation(); // prevent double open
+                      e.stopPropagation(); // prevent bubbling back to card
                       openModal(off);
                     }}
                     className="text-sm font-semibold text-[--lp-ice] underline underline-offset-4 hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[--lp-ice] rounded"
@@ -158,7 +168,7 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
                 ) : null}
                 */}
               </div>
-            </button>
+            </div>
           </li>
         ))}
       </ul>
@@ -170,11 +180,11 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
             <header className="mb-4">
               <h2 className="text-2xl font-bold">
                 {selected.name}
-                {("nickname" in selected && selected.nickname) && (
-                    <span className="ml-2 text-[--lp-ice] font-semibold text-lg">
-                      “{selected.nickname}”
-                    </span>
-                  )}
+                {selected.nickname ? (
+                  <span className="ml-2 text-[--lp-ice] font-semibold text-lg">
+                    “{selected.nickname}”
+                  </span>
+                ) : null}
               </h2>
               <p className="prose-muted">{selected.title}</p>
             </header>
