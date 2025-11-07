@@ -120,9 +120,14 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
                   {off.title}
                 </p>
                 {/* Name is no longer the hover target */}
-                <span className="mt-1 block text-lg font-semibold">
-                  {off.name}
-                </span>
+                <div className="mt-1">
+                  <span className="block text-lg font-semibold">{off.name}</span>
+                  {("nickname" in off && off.nickname) && (
+                    <span className="inline-block mt-0.5 text-sm text-[--lp-ice] font-medium">
+                      “{off.nickname}”
+                    </span>
+                  )}
+                </div>
 
                 {/* CTA line: hover target for desktop; click works everywhere */}
                 <div className="mt-3">
@@ -163,7 +168,14 @@ export default function OfficerGallery({ officers }: { officers: Officer[] }) {
         <Modal onClose={() => setOpen(false)}>
           <article className="max-w-2xl">
             <header className="mb-4">
-              <h2 className="text-2xl font-bold">{selected.name}</h2>
+              <h2 className="text-2xl font-bold">
+                {selected.name}
+                {("nickname" in selected && selected.nickname) && (
+                    <span className="ml-2 text-[--lp-ice] font-semibold text-lg">
+                      “{selected.nickname}”
+                    </span>
+                  )}
+              </h2>
               <p className="prose-muted">{selected.title}</p>
             </header>
             {renderSelectedTestimony()}
