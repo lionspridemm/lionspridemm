@@ -70,6 +70,7 @@ export default function OfficersPage() {
   const officers = OFFICERS.map((o: OfficerDef) => ({
     name: o.name,
     title: o.title,
+    nickname: o.nickname,
     image: resolveImage(o.slug),
     testimony:
       (TESTIMONIES[o.slug]?.trim()?.length ?? 0) > 0
