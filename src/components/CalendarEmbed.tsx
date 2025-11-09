@@ -34,13 +34,13 @@ export default function CalendarEmbed({
   timeZone: string;
   initialMode?: Mode;
 }) {
-  const [mode, setMode] = useState<Mode>(initialMode ?? "WEEK");
+  const [mode, setMode] = useState<Mode>(initialMode ?? "AGENDA");
   const [height, setHeight] = useState<number>(760);
 
   // Choose sensible defaults and heights per device + view.
   useEffect(() => {
     const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-    const defaultMode: Mode = initialMode ? initialMode : isMobile ? "AGENDA" : "WEEK";
+    const defaultMode: Mode = initialMode ? initialMode : isMobile ? "AGENDA" : "AGENDA";
     setMode(defaultMode);
 
     const computeHeight = (m: Mode, mobile: boolean) => {
