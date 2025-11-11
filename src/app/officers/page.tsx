@@ -82,9 +82,6 @@ export default function OfficersPage() {
     <section className="mx-auto max-w-6xl px-4 py-12 text-white">
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">Officers</h1>
-        <p className="mt-3 prose-muted max-w-prose">
-          Hover or tap the call-to-action to read a short testimony.
-        </p>
       </header>
 
       <OfficerGallery officers={officers} />
