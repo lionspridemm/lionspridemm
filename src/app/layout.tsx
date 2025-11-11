@@ -4,23 +4,36 @@ import Link from "next/link";
 import { Phone, Facebook } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import Background from "@/components/Background";
-import MobileHeader from "@/components/MobileHeader"; // ⬅️ add this import
+import MobileHeader from "@/components/MobileHeader";
+import SeoJsonLd from "@/components/SeoJsonLd";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const defaultTitle = "Lion’s Pride MM";
+const defaultDesc = "Riding with purpose. Serving with love.";
 
 export const metadata: Metadata = {
-  title: "Lion’s Pride MM",
-  description: "Riding with purpose. Serving with love.",
-  metadataBase: new URL("https://lionspridemm.com"),
+  title: {
+    default: defaultTitle,
+    template: "%s — Lion’s Pride MM",
+  },
+  description: defaultDesc,
+  metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Lion’s Pride MM",
-    description: "Riding with purpose. Serving with love.",
-    url: "https://lionspridemm.com",
-    siteName: "Lion’s Pride MM",
     type: "website",
+    url: "/",
+    siteName: "Lion’s Pride MM",
+    title: defaultTitle,
+    description: defaultDesc,
+    images: [{ url: "/og/og-default.jpg", width: 1200, height: 630, alt: defaultTitle }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lion’s Pride MM",
-    description: "Riding with purpose. Serving with love.",
+    title: defaultTitle,
+    description: defaultDesc,
+    images: ["/og/og-default.jpg"],
+  },
+  alternates: {
+    canonical: "/", // Next will resolve absolute with metadataBase
   },
 };
 
@@ -37,22 +50,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href="/mobile.css" media="(max-width: 900px)" />
       </head>
       <body className="antialiased selection:bg-[--lp-ice]/30 selection:text-white">
+        <SeoJsonLd /> {/* ✅ structured data injected here */}
         <Background />
 
-        {/* Desktop / Tablet header (unchanged) */}
+        {/* Desktop / Tablet header */}
         <div className="fixed left-0 top-0 z-20 hidden w-full border-b border-[--lp-border] bg-black/70 supports-[backdrop-filter]:backdrop-blur md:block">
           <PageHeader />
         </div>
 
-        {/* Mobile header (client component handles open/close) */}
+        {/* Mobile header */}
         <MobileHeader />
 
         {/* Main content */}
         <main className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-[calc(5.5rem+env(safe-area-inset-bottom))] text-white md:pt-32 md:pb-[calc(6.5rem+env(safe-area-inset-bottom))]">
-          {children}          
+          {children}
         </main>
 
-        {/* Footer (unchanged) */}
+        {/* Footer */}
         <footer className="fixed bottom-0 left-0 z-20 w-full border-t border-[--lp-border] bg-black/70 text-white supports-[backdrop-filter]:backdrop-blur">
           <div className="mx-auto max-w-6xl px-4 py-3 text-sm">
             <div className="hidden items-center justify-between gap-2 md:flex">

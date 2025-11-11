@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = "https://lionspridemm.com";
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
   return [
     { url: `${base}/`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/about`, changeFrequency: "monthly" },
     { url: `${base}/documents`, changeFrequency: "monthly" },
     { url: `${base}/privacy`, changeFrequency: "yearly" },
     { url: `${base}/terms`, changeFrequency: "yearly" },
-    { url: `${base}/contact`, changeFrequency: "monthly" }
+    { url: `${base}/contact`, changeFrequency: "monthly" },
   ];
 }
