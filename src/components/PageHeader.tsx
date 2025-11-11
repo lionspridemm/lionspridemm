@@ -29,7 +29,7 @@ export default function PageHeader() {
             className="w-10 h-10 rounded-full ring-1 ring-[--lp-ice]/50"
           />
           <div className="leading-tight">
-            <div className="font-black tracking-wide text-lg">Lion’s Pride MM (DEV)</div>
+            <div className="font-black tracking-wide text-lg">Lion’s Pride MM</div>
             <div className="text-xs prose-muted">Motorcycle Ministry</div>
           </div>
         </Link>
