@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 // Source of truth
 const OFFICERS = [
   { name: "Don Aulbert",    nickname: "Big D",     title: "President",                  slug: "don-aulbert" },
-  { name: "Angela Aulbert", nickname: "Wisdom",    title: "Secretary / Chaplain",       slug: "angela-aulbert" },
-  { name: "Jeff Miller",    nickname: "Spoof",     title: "Road Captain",               slug: "jeff-miller" },
-  { name: "Jon Sansoucie",  nickname: "Fish",      title: "Media Officer",              slug: "jon-sansoucie" },
   { name: "Nick Lanham",    nickname: "Grandpa",   title: "Vice President / Chaplain",  slug: "nick-lanham" },
+  { name: "Angela Aulbert", nickname: "Wisdom",    title: "Secretary / Chaplain",       slug: "angela-aulbert" },
+  { name: "Jon Sansoucie",  nickname: "Fish",      title: "Media Officer",              slug: "jon-sansoucie" },
+  { name: "Jeff Miller",    nickname: "Spoof",     title: "Road Captain",               slug: "jeff-miller" },
 ] as const;
 
 type OfficerDef = (typeof OFFICERS)[number];

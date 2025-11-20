@@ -102,7 +102,7 @@ export default function JoinPage() {
                 <li>Christ-centered, Scripture-anchored.</li>
                 <li>Guided by bylaws and accountable leadership.</li>
                 <li>
-                  Giving: at chapter meetings we “pass the hat.” Members—especially officers—are
+                  Giving: at chapter meetings we “pass the hat.” Members, especially officers, are
                   encouraged to give as they’re able. No fixed dues.
                 </li>
               </ul>
