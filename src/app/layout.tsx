@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Phone, Facebook } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 import PageHeader from "@/components/PageHeader";
 import Background from "@/components/Background";
 import MobileHeader from "@/components/MobileHeader";
@@ -105,6 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
