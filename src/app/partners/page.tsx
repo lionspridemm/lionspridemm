@@ -92,20 +92,8 @@ type PartnerCardProps = {
 };
 
 function PartnerCard({ name, image, url }: PartnerCardProps) {
-  const Wrapper: any = url ? "a" : "div";
-
-  return (
-    <Wrapper
-      {...(url
-        ? {
-            href: url,
-            target: "_blank",
-            rel: "noopener noreferrer",
-          }
-        : {})}
-      className="group block rounded-xl border border-[--lp-border] bg-black/30 p-4 hover:bg-white/5 transition"
-      title={name}
-    >
+  const inner = (
+    <>
       <div className="w-full aspect-video relative rounded-md overflow-hidden bg-black/20">
         <Image
           src={image}
@@ -115,6 +103,29 @@ function PartnerCard({ name, image, url }: PartnerCardProps) {
         />
       </div>
       <p className="mt-2 font-semibold text-sm">{name}</p>
-    </Wrapper>
+    </>
+  );
+
+  if (url) {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group block rounded-xl border border-[--lp-border] bg-black/30 p-4 hover:bg-white/5 transition"
+        title={name}
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <div
+      className="group block rounded-xl border border-[--lp-border] bg-black/30 p-4 hover:bg-white/5 transition"
+      title={name}
+    >
+      {inner}
+    </div>
   );
 }
