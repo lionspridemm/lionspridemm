@@ -11,6 +11,7 @@ const links = [
   { href: "/officers", label: "Officers" },
   { href: "/documents", label: "Documents" },
   { href: "/events", label: "Events" },
+  { href: "/partners", label: "Sponsors" },
   { href: "/join", label: "Join Us" },
   { href: "/contact", label: "Contact" }, // still used for mobile menu
 ];
