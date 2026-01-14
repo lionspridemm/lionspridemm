@@ -3,11 +3,20 @@
 import Image from "next/image";
 
 
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
+type Product =
+| {
+id: string;
+name: string;
+image: string;
+kind: "item";
+price: number;
+}
+| {
+id: string;
+name: string;
+image: string;
+kind: "design";
+priceNote: string;
 };
 
 const SHIRT_PRICING = {
