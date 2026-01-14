@@ -23,10 +23,19 @@
 /* Hard fallback so CSS var always exists */
 :root {
   color-scheme: dark;
-  --lp-ice: #7cc5ff;
+
+  /* hard runtime vars (used by .card, .btn-ice, etc.) */
+  --lp-gold:  #d8a24a;
+  --lp-amber: #f59e0b;
+  --lp-muted: #b8b6b3;
+  --lp-border:#3b342f;
+  --lp-card:  #1b1816;
+  --lp-ice:   #7cc5ff;
+
   background: var(--color-bg-950);
   color: var(--color-fg-100);
 }
+
 
 /* Frosted blue panel utility for server components (no styled-jsx) */
 .frost {
