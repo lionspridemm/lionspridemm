@@ -14,6 +14,10 @@ export const partners: {
 
     ],
     oneTime: [
-
+        {
+            name: "Colossians Handyman",
+            url: "https://colossianshandyman.com",
+            image: "/partners/one-time/colossians_handyman.png",
+          },
     ],
 };

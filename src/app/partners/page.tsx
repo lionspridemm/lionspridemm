@@ -57,7 +57,7 @@ export default function SponsorsPage() {
       <section className="space-y-6">
         <h2 className="text-2xl font-bold">One-Time Supporters</h2>
         <p className="text-[--lp-muted] max-w-prose">
-          Individuals and organizations who have sown into specific events,
+          Individuals and organizations who have invested into specific events,
           needs, or projects.
         </p>
 
