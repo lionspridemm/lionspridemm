@@ -78,7 +78,7 @@ export default function SponsorsPage() {
       <div className="card p-6 md:p-8 text-sm prose-muted text-center">
         <p>
           Listing a sponsor does not imply endorsement of their products or services.
-          It recognizes generosity toward the ministry work of Lion’s Pride Motorcycle Ministry.
+          It recognizes generosity toward the work of Lion’s Pride Motorcycle Ministry.
         </p>
       </div>
     </section>

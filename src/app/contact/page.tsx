@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Calendar, MapPin } from "lucide-react";
+import { Phone, Calendar, MapPin, Mail } from "lucide-react";
 
 export const metadata = {
   title: "Contact | Lion’s Pride MM",
@@ -90,27 +90,45 @@ export default function ContactPage() {
             <p className="mt-2 text-sm prose-muted">
               Need prayer or someone to stand with you? We’ll connect fast and follow up.
             </p>
-            <a
-              href="tel:+16362990857"
-              className="btn-accent mt-4 inline-flex items-center gap-2 group relative"
-              title="636-299-0857"
-            >
-              <Phone className="w-4 h-4" />
-              Call Now
-              {/* Tooltip */}
-              <span
-                role="tooltip"
-                className="pointer-events-none absolute -top-12 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-[--lp-border] bg-[var(--lp-card)] px-3 py-1.5 text-sm font-semibold text-[--lp-ice] shadow-xl group-hover:block group-focus-visible:block"
+
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <a
+                href="tel:+16362990857"
+                className="btn-accent inline-flex items-center gap-2 group relative justify-center"
+                title="636-299-0857"
               >
-                636-299-0857
-              </span>
-            </a>
+                <Phone className="w-4 h-4" />
+                Call Now
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute -top-12 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-[--lp-border] bg-[var(--lp-card)] px-3 py-1.5 text-sm font-semibold text-[--lp-ice] shadow-xl group-hover:block group-focus-visible:block"
+                >
+                  636-299-0857
+                </span>
+              </a>
+
+              <a
+                href="mailto:lionspridemm@gmail.com"
+                className="btn-accent inline-flex items-center gap-2 group relative justify-center"
+                title="lionspridemm@gmail.com"
+              >
+                <Mail className="w-4 h-4" />
+                Email Us
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute -top-12 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-[--lp-border] bg-[var(--lp-card)] px-3 py-1.5 text-sm font-semibold text-[--lp-ice] shadow-xl group-hover:block group-focus-visible:block"
+                >
+                  lionspridemm@gmail.com
+                </span>
+              </a>
+            </div>
+
           </div>
 
           <div className="card p-6">
-            <h2 className="text-lg font-semibold">Find a Chapter</h2>
+            <h2 className="text-lg font-semibold">Find a Home</h2>
             <p className="mt-2 text-sm prose-muted">
-              We’re building across Missouri and growing. Reach out to connect with a chapter.
+              We’re building and growing fast. Reach out to connect with a member to join our family!
             </p>
             <Link href="/join" className="btn-ice mt-4 inline-flex items-center gap-2">
               <MapPin className="w-4 h-4" />

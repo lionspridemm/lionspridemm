@@ -11,22 +11,9 @@ export const partners: {
   oneTime: Partner[];
 } = {
   monthly: [
-      {
-        name: "Lion's Pride MM",
-        url: "https://lionspridemm.com",
-        image: "/partners/monthly/lions-pride-mm.jpg",
-      },
-      {
-        name: "Mabry Family",
-        url: null, // no link if they’re an individual
-        image: "/partners/monthly/mabry-family.jpg",
-      },
+
     ],
     oneTime: [
-      {
-        name: "Colossians Handyman",
-        url: "https://colossianshandyman.com",
-        image: "/partners/one-time/colossians-handyman.png",
-      },
+
     ],
 };

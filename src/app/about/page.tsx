@@ -139,7 +139,7 @@ export default function AboutPage() {
         <div className="card p-6 space-y-3">
           <h3 className="font-semibold">New Here?</h3>
           <p className="text-sm prose-muted">
-            Meet the officers, visit a chapter meeting, or roll on a ride with us. If you’re not on a bike, follow in
+            Meet the officers, visit a ministry meeting, or roll on a ride with us. If you’re not on a bike, follow in
             your car—seriously. Come as you are.
           </p>
           <div className="grid gap-2">
