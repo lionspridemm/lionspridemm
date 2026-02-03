@@ -10,6 +10,8 @@ const navLinks = [
   { href: "/officers", label: "Officers" },
   { href: "/documents", label: "Documents" },
   { href: "/events", label: "Events" },
+  { href: "/merch", label: "Merch" },
+  { href: "/partners", label: "Sponsors" },
   { href: "/join", label: "Join Us" },
   // No Contact here — you have the big Contact button below
 ];

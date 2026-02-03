@@ -47,13 +47,13 @@ export default function JoinPage() {
                 <li className="rounded-xl border border-[--lp-border] p-4">
                   <p className="font-semibold">1) Show Up &amp; Ride</p>
                   <p className="mt-1 text-[--lp-muted]">
-                    Come to an open ride, service event, or chapter meeting. Meet the crew. Feel the fit.
+                    Come to an open ride, service event, or ministry meeting. Meet the crew. Feel the fit.
                   </p>
                 </li>
                 <li className="rounded-xl border border-[--lp-border] p-4">
                   <p className="font-semibold">2) Connect &amp; Grow</p>
                   <p className="mt-1 text-[--lp-muted]">
-                    Pray with us, serve with us, be consistent. We’re a brotherhood/sisterhood, not a spectator club.
+                    Pray with us, serve with us, be consistent. We’re a brotherhood/sisterhood, not a spectator club. We do God's work daily and do everything we can to show His love to our community.
                   </p>
                 </li>
                 <li className="rounded-xl border border-[--lp-border] p-4">
@@ -102,7 +102,7 @@ export default function JoinPage() {
                 <li>Christ-centered, Scripture-anchored.</li>
                 <li>Guided by bylaws and accountable leadership.</li>
                 <li>
-                  Giving: at chapter meetings we “pass the hat.” Members, especially officers, are
+                  Giving: at ministry meetings we “pass the hat.” Members, especially officers, are
                   encouraged to give as they’re able. No fixed dues.
                 </li>
               </ul>
@@ -141,7 +141,7 @@ export default function JoinPage() {
           <div className="p-6">
             <h3 className="text-lg font-bold">Are there dues?</h3>
             <p className="mt-2 text-[--lp-muted]">
-              No mandatory dues. At chapter meetings we pass a hat and encourage members—and especially officers—to
+              No mandatory dues. At ministry meetings we pass a hat and encourage members—and especially officers—to
               give as they can.
             </p>
           </div>
