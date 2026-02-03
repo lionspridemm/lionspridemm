@@ -34,6 +34,24 @@ export default function DocumentsPage() {
         <li className="card p-5">
           <div className="flex items-center justify-between gap-4">
             <div>
+              <h2 className="text-lg font-semibold">Background Consent (PDF)</h2>
+              <p className="text-sm text-[--lp-muted]">Printable Form to Sign</p>
+            </div>
+            <Link
+              href="/docs/background_check.pdf"
+              target="_blank"
+              rel="noopener"
+              className="btn-ice"
+            >
+              Open PDF
+            </Link>
+          </div>
+        </li>
+
+
+        <li className="card p-5">
+          <div className="flex items-center justify-between gap-4">
+            <div>
               <h2 className="text-lg font-semibold">Privacy Policy</h2>
               <p className="text-sm text-[--lp-muted]">How we handle data.</p>
             </div>
