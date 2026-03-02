@@ -139,6 +139,8 @@ export default function MerchPage() {
       >
         <a
           href="https://lionspridemm.square.site"
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-ice inline-flex items-center justify-center px-8 py-3 text-lg"
         >
           Shop on Square!
