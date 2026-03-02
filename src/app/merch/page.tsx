@@ -138,7 +138,7 @@ export default function MerchPage() {
         className="mt-16 flex flex-col items-center gap-3 text-center scroll-mt-24"
       >
         <a
-          href="#square-storefront"
+          href="https://lionspridemm.square.site"
           className="btn-ice inline-flex items-center justify-center px-8 py-3 text-lg"
         >
           Shop on Square!
