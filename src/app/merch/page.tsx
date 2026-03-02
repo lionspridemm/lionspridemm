@@ -107,7 +107,9 @@ export default function MerchPage() {
 
           <div className="flex flex-col gap-2 sm:flex-row md:flex-col md:items-end">
             <a
-              href="#square-storefront"
+              href="https://lionspridemm.square.site"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-ice inline-flex items-center justify-center px-7 py-3 text-base font-semibold"
             >
               Shop in Square
